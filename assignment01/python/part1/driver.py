@@ -2,7 +2,7 @@
 
 import subprocess
 
-input_file = "../input/access.log"
+input_file = "../../input/access.log"
 output_file = "/"
 
 # Run the first MapReduce job to count occurrences of IP addresses per hour
