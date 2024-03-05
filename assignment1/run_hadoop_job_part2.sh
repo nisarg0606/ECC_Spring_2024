@@ -21,10 +21,10 @@ fi
 
 # Run the Hadoop streaming job
 hadoop jar $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-3.3.6.jar \
-    -file /home/hadoop/assignment1/Part_02/mapper.py \
-    -mapper "/usr/bin/python3 /home/hadoop/assignment1/Part_02/mapper.py" \
-    -file /home/hadoop/assignment1/Part_02/reducer.py \
-    -reducer "/usr/bin/python3 /home/hadoop/assignment1/Part_02/reducer.py $start_time-$end_time" \
+    -file /home/hadoop/ECC_Spring_2024/assignment1/Part_02/mapper.py \
+    -mapper "/usr/bin/python3 /home/hadoop/ECC_Spring_2024/assignment1/Part_02/mapper.py" \
+    -file /home/hadoop/ECC_Spring_2024/assignment1/Part_02/reducer.py \
+    -reducer "/usr/bin/python3 /home/hadoop/ECC_Spring_2024/assignment1/Part_02/reducer.py $start_time-$end_time" \
     -input $hdfs_input \
     -output $hdfs_output
 

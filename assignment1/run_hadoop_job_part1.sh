@@ -30,10 +30,10 @@ fi
 # Run the Hadoop streaming job based on the reducer choice
 echo "Running reducer$reducer_choice"
 hadoop jar $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-3.3.6.jar \
-    -file /home/hadoop/assignment1/Part_01/mapper.py \
-    -mapper "/usr/bin/python3 /home/hadoop/assignment1/Part_01/mapper.py" \
-    -file /home/hadoop/assignment1/Part_01/reducer$reducer_choice.py \
-    -reducer "/usr/bin/python3 /home/hadoop/assignment1/Part_01/reducer$reducer_choice.py" \
+    -file /home/hadoop/ECC_Spring_2024/assignment1/Part_01/mapper.py \
+    -mapper "/usr/bin/python3 /home/hadoop/ECC_Spring_2024/assignment1/Part_01/mapper.py" \
+    -file /home/hadoop/ECC_Spring_2024/assignment1/Part_01/reducer$reducer_choice.py \
+    -reducer "/usr/bin/python3 /home/hadoop/ECC_Spring_2024/assignment1/Part_01/reducer$reducer_choice.py" \
     -input $hdfs_input \
     -output $hdfs_output
 
