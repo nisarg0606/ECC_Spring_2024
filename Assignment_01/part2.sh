@@ -15,11 +15,15 @@ if [ $? -eq 0 ]; then
     hdfs dfs -rm -r $hdfs_output
 fi
 
+mapper_script="/home/hadoop/Assignment_01/Part_02/mapper2.py"
+reducer_script="/home/hadoop/Assignment_01/Part_02/reducer2.py"
 # Run the Hadoop streaming job
 #-file /home/hadoop/Assignment_01/Part_02/mapper2.py \
 #-file /home/hadoop/Assignment_01/Part_02/reducer2.py \
 hadoop jar $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-3.3.6.jar \
+    -file $mapper_script \
     -mapper "/usr/bin/python3 /home/hadoop/Assignment_01/Part_02/mapper2.py" \
+    -file $reducer_script \
     -reducer "/usr/bin/python3 /home/hadoop/Assignment_01/Part_02/reducer2.py" \
     -input $hdfs_input \
     -cmdenv TIMEFRAME="$start_hour-$end_hour" \

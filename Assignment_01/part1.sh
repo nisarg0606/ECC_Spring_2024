@@ -31,7 +31,9 @@ fi
 
 # Run the Hadoop streaming job
 hadoop jar $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-3.3.6.jar \
+    -file $mapper_script \
     -mapper "/usr/bin/python3 $mapper_script" \
+    -file $reducer_script \
     -reducer "/usr/bin/python3 $reducer_script" \
     -input $hdfs_input \
     -output $hdfs_output
