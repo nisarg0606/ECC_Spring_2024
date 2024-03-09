@@ -15,16 +15,13 @@ if [ $? -eq 0 ]; then
     hdfs dfs -rm -r $hdfs_output
 fi
 
-# Take the user input for the pattern to search
-read -p "Enter the pattern to search: " pattern
-
 # Run the Hadoop streaming job
 hadoop jar $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-3.3.6.jar \
     -D mapreduce.job.name="Sort Example" \
     -D mapreduce.job.reuse.jvm.num.tasks=4 \
     -D mapreduce.job.maps=4 \
     -D mapreduce.job.reduces=1 \
-    -mapper "/usr/bin/python3 /home/hadoop/ECC_Spring_2024/assignment1/Examples/Sort/mapper.py $pattern" \
+    -mapper "/usr/bin/python3 /home/hadoop/ECC_Spring_2024/assignment1/Examples/Sort/mapper.py" \
     -reducer "/usr/bin/python3 /home/hadoop/ECC_Spring_2024/assignment1/Examples/Sort/reducer.py" \
     -input $hdfs_input \
     -output $hdfs_output

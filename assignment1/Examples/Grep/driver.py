@@ -2,12 +2,12 @@
 
 import subprocess
 
-input_file = "F://ECC_Spring_2024//Assignment_01//Input//access.log"
+input_file = "F://ECC_Spring_2024//Assignment_01//Input//example.log"
 output_file = "assignment1//Part_01//Outputs_New"
 
 # Run the first MapReduce job to count occurrences of IP addresses per hour
 mapper1_cmd = ["python3", "mapper.py"]
-reducer1_cmd = ["python3", "reducer1.py"]
+reducer1_cmd = ["python3", "reducer.py"]
 sort_cmd = ["sort"]
 
 with open(input_file, 'r') as f:
