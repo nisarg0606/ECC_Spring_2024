@@ -35,7 +35,7 @@ hadoop jar $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-3.3.6.jar \
     -D mapreduce.job.name="$job_name" \
     -D mapreduce.job.reuse.jvm.num.tasks=4 \
     -D mapreduce.job.maps=4 \
-    -D mapreduce.job.reduces=4 \
+    -D mapreduce.job.reduces=1 \
     -mapper "/usr/bin/python3 /home/hadoop/ECC_Spring_2024/assignment1/Part_01/mapper.py" \
     -reducer "/usr/bin/python3 /home/hadoop/ECC_Spring_2024/assignment1/Part_01/reducer$reducer_choice.py" \
     -input $hdfs_input \

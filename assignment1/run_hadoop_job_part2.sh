@@ -24,7 +24,7 @@ hadoop jar $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-3.3.6.jar \
     -D mapreduce.job.name="Part 02 - Access Log" \
     -D mapreduce.job.reuse.jvm.num.tasks=4 \
     -D mapreduce.job.maps=4 \
-    -D mapreduce.job.reduces=4 \
+    -D mapreduce.job.reduces=1 \
     -mapper "/usr/bin/python3 /home/hadoop/ECC_Spring_2024/assignment1/Part_02/mapper.py" \
     -reducer "/usr/bin/python3 /home/hadoop/ECC_Spring_2024/assignment1/Part_02/reducer.py $start_time-$end_time" \
     -input $hdfs_input \
