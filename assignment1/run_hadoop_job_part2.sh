@@ -32,8 +32,8 @@ hadoop jar $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-3.3.6.jar \
 
 echo "Job completed. Output stored in: $hdfs_output"
 
+output_file="/home/hadoop/ECC_Spring_2024/assignment1/output_part2_${start_time}_${end_time}_$(date '+%Y-%m-%d-%H-%M').txt"
 # Store the HDFS output to local file system in a text file
-hdfs dfs -cat $hdfs_output/part-00000 > /home/hadoop/ECC_Spring_2024/assignment1/output_part2_${start_time}_${end_time}_$(date '+%Y-%m-%d').txt
+hdfs dfs -cat $hdfs_output/part-00000 > $output_file
 
-echo "Output stored in local file system: /home/hadoop/ECC_Spring_2024/assignment1/output_part2_${start_time}_${end_time}_$(date '+%Y-%m-%d').txt"
-
+echo "Output stored in local file system: $output_file"

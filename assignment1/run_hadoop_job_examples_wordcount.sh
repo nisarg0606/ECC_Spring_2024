@@ -1,12 +1,12 @@
  #!/bin/bash
 
 # Redirect all output to a log file
-exec > >(tee -i cmd_wordcount_$(date '+%Y-%m-%d').log)
+exec > >(tee -i cmd_wordcount_$(date '+%Y-%m-%d-%H-%M').log)
 exec 2>&1
 
 # Define HDFS input and output paths
 hdfs_input="/Input/access.log"
-hdfs_output="/assignment1/WordCount_Output/wc_output_$(date '+%Y-%m-%d')"
+hdfs_output="/assignment1/WordCount_Output/wc_output_$(date '+%Y-%m-%d-%H-%M')"
 
 # Check if the output directory exists, delete it if it does
 hdfs dfs -test -d $hdfs_output
@@ -28,7 +28,8 @@ hadoop jar $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-3.3.6.jar \
 
 echo "Job completed. Output stored in: $hdfs_output"
 
-# Store the HDFS output to local file system in a text file
-hdfs dfs -cat $hdfs_output/part-00000 > /home/hadoop/ECC_Spring_2024/assignment1/output_wordcount_$(date '+%Y-%m-%d').txt
 
-echo "Output stored in local file system: /home/hadoop/ECC_Spring_2024/assignment1/output_wordcount_$(date '+%Y-%m-%d').txt"
+output_file="/home/hadoop/ECC_Spring_2024/assignment1/output_wordcount_$(date '+%Y-%m-%d-%H-%M').txt"
+# Store the HDFS output to local file system in a text file
+hdfs dfs -cat $hdfs_output/part-00000 > $output_file
+echo "Output stored in local file system: $output_file"

@@ -14,9 +14,11 @@ read -p "Enter 1 for reducer1(Get top 3 ip from each hour) or 2 for reducer2(Get
 if [ $reducer_choice -eq 1 ]; then
     hdfs_output="/assignment1/Part_01/Output_For_Reduce_reducer1"
     job_name="Part 01 - Reducer 1"
+    output_file="/home/hadoop/ECC_Spring_2024/assignment1/output_part1_reducer1_$(date '+%Y-%m-%d-%H-%M').txt"
 elif [ $reducer_choice -eq 2 ]; then
     hdfs_output="/assignment1/Part_01/Output_For_Reduce_reducer2"
     job_name="Part 01 - Reducer 2"
+    output_file="/home/hadoop/ECC_Spring_2024/assignment1/output_part1_reducer2_$(date '+%Y-%m-%d-%H-%M').txt"
 else
     echo "Invalid choice. Exiting..."
     exit 1
@@ -45,6 +47,6 @@ echo "Job completed. Output stored in: $hdfs_output"
 
 
 #store the hdfs output to local file system in a text file
-hdfs dfs -cat $hdfs_output/part-00000 > /home/hadoop/ECC_Spring_2024/assignment1/output_part1_$(date '+%Y-%m-%d').txt
+hdfs dfs -cat $hdfs_output/part-00000 > $output_file
 
-echo "Output stored in local file system: /home/hadoop/ECC_Spring_2024/assignment1/output_part1_$(date '+%Y-%m-%d').txt"
+echo "Output stored in local file system: $output_file"
