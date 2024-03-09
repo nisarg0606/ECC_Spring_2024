@@ -5,7 +5,7 @@ exec > >(tee -i cmd_grep_$(date '+%Y-%m-%d').log)
 exec 2>&1
 
 # Define HDFS input and output paths
-hdfs_input="/Input/example.txt"
+hdfs_input="/Input/access.log"
 hdfs_output="/assignment1/Grep_Output/grep_output_$(date '+%Y-%m-%d')"
 
 # Check if the output directory exists, delete it if it does
