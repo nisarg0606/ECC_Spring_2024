@@ -21,6 +21,10 @@ fi
 
 # Run the Hadoop streaming job
 hadoop jar $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-3.3.6.jar \
+    -D mapreduce.job.name="Part 02 - Access Log" \
+    -D mapreduce.job.reuse.jvm.num.tasks=4 \
+    -D mapreduce.job.maps=4 \
+    -D mapreduce.job.reduces=4 \
     -mapper "/usr/bin/python3 /home/hadoop/ECC_Spring_2024/assignment1/Part_02/mapper.py" \
     -reducer "/usr/bin/python3 /home/hadoop/ECC_Spring_2024/assignment1/Part_02/reducer.py $start_time-$end_time" \
     -input $hdfs_input \
@@ -29,7 +33,7 @@ hadoop jar $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-3.3.6.jar \
 echo "Job completed. Output stored in: $hdfs_output"
 
 # Store the HDFS output to local file system in a text file
-hdfs dfs -cat $hdfs_output/part-00000 > /home/hadoop/output_part2_${start_time}_${end_time}_$(date '+%Y-%m-%d').txt
+hdfs dfs -cat $hdfs_output/part-00000 > /home/hadoop/ECC_Spring_2024/assignment1/output_part2_${start_time}_${end_time}_$(date '+%Y-%m-%d').txt
 
-echo "Output stored in local file system: /home/hadoop/output_part2_${start_time}_${end_time}_$(date '+%Y-%m-%d').txt"
+echo "Output stored in local file system: /home/hadoop/ECC_Spring_2024/assignment1/output_part2_${start_time}_${end_time}_$(date '+%Y-%m-%d').txt"
 

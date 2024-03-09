@@ -17,6 +17,10 @@ fi
 
 # Run the Hadoop streaming job
 hadoop jar $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-3.3.6.jar \
+    -D mapreduce.job.name="WordCount Example" \
+    -D mapreduce.job.reuse.jvm.num.tasks=4 \
+    -D mapreduce.job.maps=4 \
+    -D mapreduce.job.reduces=4 \
     -mapper "/usr/bin/python3 /home/hadoop/ECC_Spring_2024/assignment1/Examples/WordCount/mapper.py" \
     -reducer "/usr/bin/python3 /home/hadoop/ECC_Spring_2024/assignment1/WordCount/reducer.py" \
     -input $hdfs_input \
@@ -25,6 +29,6 @@ hadoop jar $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-3.3.6.jar \
 echo "Job completed. Output stored in: $hdfs_output"
 
 # Store the HDFS output to local file system in a text file
-hdfs dfs -cat $hdfs_output/part-00000 > /home/hadoop/output_wordcount_$(date '+%Y-%m-%d').txt
+hdfs dfs -cat $hdfs_output/part-00000 > /home/hadoop/ECC_Spring_2024/assignment1/output_wordcount_$(date '+%Y-%m-%d').txt
 
-echo "Output stored in local file system: /home/hadoop/output_wordcount_$(date '+%Y-%m-%d').txt"
+echo "Output stored in local file system: /home/hadoop/ECC_Spring_2024/assignment1/output_wordcount_$(date '+%Y-%m-%d').txt"
