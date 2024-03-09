@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-# import sys because we need to read and write data to STDIN and STDOUT
+
+
 import sys
 
 # reading entire line from STDIN (standard input)
