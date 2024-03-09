@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# Redirect all output to a log file
-exec > >(tee -i cmd_part1.txt)
+# Redirect all output to a log file and save the name with today's date as may 02 2022
+exec > >(tee -i cmd_part1_$(date '+%Y-%m-%d').log)
 exec 2>&1
 
 # Define HDFS input path
-hdfs_input="/assignment1/Input/access.log"
+hdfs_input="/Input/access.log"
 
 # Ask the user which reducer to run
 read -p "Enter 1 for reducer1(Get top 3 ip from each hour) or 2 for reducer2(Get top 3 ip from all hours): " reducer_choice
@@ -30,11 +30,15 @@ fi
 # Run the Hadoop streaming job based on the reducer choice
 echo "Running reducer$reducer_choice"
 hadoop jar $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-3.3.6.jar \
-    -file /home/hadoop/ECC_Spring_2024/assignment1/Part_01/mapper.py \
     -mapper "/usr/bin/python3 /home/hadoop/ECC_Spring_2024/assignment1/Part_01/mapper.py" \
-    -file /home/hadoop/ECC_Spring_2024/assignment1/Part_01/reducer$reducer_choice.py \
     -reducer "/usr/bin/python3 /home/hadoop/ECC_Spring_2024/assignment1/Part_01/reducer$reducer_choice.py" \
     -input $hdfs_input \
     -output $hdfs_output
 
 echo "Job completed. Output stored in: $hdfs_output"
+
+
+#store the hdfs output to local file system in a text file
+hdfs dfs -cat $hdfs_output/part-00000 > /home/hadoop/output_part1_$(date '+%Y-%m-%d').txt
+
+echo "Output stored in local file system: /home/hadoop/output_part1_$(date '+%Y-%m-%d').txt"
