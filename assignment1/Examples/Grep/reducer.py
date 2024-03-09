@@ -6,5 +6,4 @@ import sys
 for line in sys.stdin:
     # Remove leading and trailing whitespace
     line = line.strip()
-    # Output the line
     print(line)
