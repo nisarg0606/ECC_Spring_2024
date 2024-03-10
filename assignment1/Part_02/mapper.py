@@ -1,3 +1,11 @@
+'''
+author: Nisarg Shah
+email: ns26@iu.edu
+Subject: ENGR-E 516
+Assignment: 1
+log analysis mapper for specific hour range
+'''
+
 import sys
 import re
 from datetime import datetime

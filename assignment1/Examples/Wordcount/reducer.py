@@ -1,36 +1,34 @@
 #!/usr/bin/env python3
+
+'''
+author: Nisarg Shah
+email: ns26@iu.edu
+Subject: ENGR-E 516
+Assignment: 1
+wordcount reducer
+'''
+
 from operator import itemgetter
 import sys
 
-current_word = None
-current_count = 0
-word = None
+current_word, current_count = None, 0
 
-# read the entire line from STDIN
 for line in sys.stdin:
-        # remove leading and trailing whitespace
-        line = line.strip()
-        # splitting the data on the basis of tab we have provided in mapper.py
-        word, count = line.split('\t', 1)
-        # convert count (currently a string) to int
-        try:
-                count = int(count)
-        except ValueError:
-                # count was not a number, so silently
-                # ignore/discard this line
-                continue
+    line = line.strip()
+    word, count = line.split('\t', 1)
 
-        # this IF-switch only works because Hadoop sorts map output
-        # by key (here: word) before it is passed to the reducer
-        if current_word == word:
-                current_count += count
-        else:
-                if current_word:
-                        # write result to STDOUT
-                        print('%s\t%s' % (current_word, current_count))
-                current_count = count
-                current_word = word
+    try:
+        count = int(count)
+    except ValueError:
+        continue
 
-# do not forget to output the last word if needed!
-if current_word == word:
-        print('%s\t%s' % (current_word, current_count))
+    if current_word == word:
+        current_count += count
+    else:
+        if current_word:
+            print(f"{current_word}\t{current_count}")
+        current_count = count
+        current_word = word
+
+if current_word:
+    print(f"{current_word}\t{current_count}")

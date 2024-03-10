@@ -1,5 +1,13 @@
 #!/usr/bin/env python3
 
+'''
+author: Nisarg Shah
+email: ns26@iu.edu
+Subject: ENGR-E 516
+Assignment: 1
+Grep driver
+'''
+
 import subprocess
 
 input_file = "F://ECC_Spring_2024//Assignment_01//Input//example.log"

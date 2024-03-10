@@ -1,5 +1,13 @@
 #!/usr/bin/env python3
 
+'''
+author: Nisarg Shah
+email: ns26@iu.edu
+Subject: ENGR-E 516
+Assignment: 1
+log analysis reducer 1
+'''
+
 import sys
 from operator import itemgetter
 from collections import defaultdict

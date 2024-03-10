@@ -1,3 +1,11 @@
+'''
+author: Nisarg Shah
+email: ns26@iu.edu
+Subject: ENGR-E 516
+Assignment: 1
+log analysis reducer for a specific hour range
+'''
+
 import sys
 from collections import defaultdict
 from operator import itemgetter
