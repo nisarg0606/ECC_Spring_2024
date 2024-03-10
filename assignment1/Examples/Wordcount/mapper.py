@@ -1,13 +1,5 @@
 #!/usr/bin/env python3
 
-'''
-author: Nisarg Shah
-email: ns26@iu.edu
-Subject: ENGR-E 516
-Assignment: 1
-wordcount mapper
-'''
-
 import sys
 
 for line in sys.stdin:
