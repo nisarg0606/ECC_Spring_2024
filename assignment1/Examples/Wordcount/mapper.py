@@ -1,11 +1,17 @@
 #!/usr/bin/env python3
 
+'''
+author: Nisarg Shah
+email: ns26@iu.edu
+Subject: ENGR-E 516
+Assignment: 1
+wordcount mapper
+'''
+
 import sys
 
 for line in sys.stdin:
-    # Remove leading and trailing whitespace and split lines into words
-    words = line.strip().split()
-    
+    line = line.strip()
+    words = line.split()
     for word in words:
-        print(f'{word}\t1')
-        
+        print('%s\t%s' % (word, 1))

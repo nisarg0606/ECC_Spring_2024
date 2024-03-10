@@ -5,7 +5,7 @@ exec > >(tee -i cmd_wordcount_$(date '+%Y-%m-%d-%H-%M').log)
 exec 2>&1
 
 # Define HDFS input and output paths
-hdfs_input="/Input/access.log"
+hdfs_input="/Input/examples.txt"
 hdfs_output="/assignment1/WordCount_Output/wc_output_$(date '+%Y-%m-%d-%H-%M')"
 
 # Check if the output directory exists, delete it if it does
