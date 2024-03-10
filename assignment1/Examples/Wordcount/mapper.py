@@ -3,7 +3,8 @@
 import sys
 
 for line in sys.stdin:
-    line = line.strip()
-    words = line.split()
+    # Remove leading and trailing whitespace and split lines into words
+    words = line.strip().split()
+    
     for word in words:
-        print('%s\t%s' % (word, 1))
+        print(f'{word}\t1')
