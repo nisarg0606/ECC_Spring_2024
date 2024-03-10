@@ -48,7 +48,7 @@ hadoop jar $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-3.3.6.jar \
     -input $hdfs_input \
     -output $grep_output &
 
-hadop jar $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-3.3.6.jar \
+hadoop jar $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-3.3.6.jar \
     -D mapreduce.job.name="Sort Example" \
     -D mapreduce.job.reuse.jvm.num.tasks=4 \
     -D mapreduce.job.maps=4 \
