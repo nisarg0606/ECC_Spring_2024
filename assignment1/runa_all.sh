@@ -28,13 +28,12 @@ hadoop jar $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-3.3.6.jar \
     -input $hdfs_input \
     -output $hdfs_output_part2 &
 
-hadoop jar $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-3.3.6.jar \
-    -D mapreduce.job.name="WordCount Example" \
-    -D mapreduce.job.reuse.jvm.num.tasks=4 \
+ hadoop jar $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-3.3.6.jar \
     -D mapreduce.job.maps=4 \
     -D mapreduce.job.reduces=1 \
-    -mapper "/usr/bin/python3 /home/hadoop/ECC_Spring_2024/assignment1/Examples/WordCount/mapper.py" \
-    -reducer "/usr/bin/python3 /home/hadoop/ECC_Spring_2024/assignment1/WordCount/reducer.py" \
+    -D mapreduce.job.reuse.jvm.num.tasks=4 \
+    -mapper /home/hadoop/ECC_Spring_2024/assignment1/Examples/Wordcount/mapper.py \
+    -reducer /home/hadoop/ECC_Spring_2024/assignment1/Examples/Wordcount/reducer.py \
     -input $hdfs_input \
     -output $wordcount_output &
 
